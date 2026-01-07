@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sib_attendance/utils/app_colors.dart';
 import 'package:sib_attendance/utils/data_utails.dart';
 
 class MonthHeader extends StatelessWidget {
@@ -27,12 +28,12 @@ class MonthHeader extends StatelessWidget {
       child: Row(
         children: [
           IconButton(
-            icon: const Icon(Icons.calendar_month, color: Colors.indigo),
+            icon: const Icon(Icons.calendar_month, color: AppColors.primary),
             onPressed: onPickDate,
           ),
           Expanded(
             child: Text(
-              "${monthName(selectedDate.month)}, ${selectedDate.year}", //جاي من ملف utils
+              "${selectedDate.day},${monthName(selectedDate.month)}, ${selectedDate.year}", //جاي من ملف utils
               style: const TextStyle(fontWeight: FontWeight.w600),
             ),
           ),

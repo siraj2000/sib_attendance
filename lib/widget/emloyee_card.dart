@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sib_attendance/models/user_models.dart';
-import 'package:sib_attendance/utils/app_colors.dart';
-
 import 'package:sib_attendance/widget/custom_text.dart';
 import 'package:sib_attendance/widget/empolyee_profile_dialog.dart';
 
@@ -27,11 +25,21 @@ class EmployeeCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(14),
           ),
           child: ListTile(
-            leading: CircleAvatar(
-              backgroundColor: AppColors.primary,
-              radius: 17,
+            // leading: CircleAvatar(
+            //   backgroundColor: AppColors.primary,
+            //   radius: 17,
+            //   child: CustomText(text: "1"),
+            //   //Text("usersMap.id.toString()"),
+            // ),
+            leading: Container(
+              width: 35,
+              height: 35,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: const Color(0xFFEFE7FF),
+                borderRadius: BorderRadius.circular(15),
+              ),
               child: CustomText(text: "1"),
-              //Text("usersMap.id.toString()"),
             ),
             title: CustomText(
               //text: "Employee Name ",

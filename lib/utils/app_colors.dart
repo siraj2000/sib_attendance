@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   // ===== Primary =====
   // static const Color primary = Colors.indigo;
-  static const Color primary = Color(0xFFB58CFF);
+  static const Color primary = Color.fromARGB(255, 141, 79, 255);
 
   // ===== Attendance Status =====
   static const Color presentIcon = Colors.green;

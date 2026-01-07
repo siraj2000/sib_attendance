@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sib_attendance/models/user_models.dart';
-
-import 'package:sib_attendance/widget/custom_text.dart';
 import 'package:sib_attendance/widget/moth_header.dart';
 import 'package:sib_attendance/widget/mothly_attendance_item.dart';
 
@@ -35,51 +33,46 @@ class _MonthlyAttendanceReportState extends State<MonthlyAttendanceReport> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: CustomText(text: "Monthly Attendance Report", size: 14),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: TextFormField(
-                controller: searchController,
-                decoration: InputDecoration(
-                  hintText: "Search",
-                  prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey.shade300),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: TextFormField(
+              controller: searchController,
+              decoration: InputDecoration(
+                hintText: "Search",
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey.shade300),
+                  borderRadius: BorderRadius.circular(10),
                 ),
               ),
             ),
-            Text(
-              searchController.value.text.trim().isEmpty
-                  ? "name"
-                  : searchController.text,
+          ),
+          Text(
+            searchController.value.text.trim().isEmpty
+                ? "name"
+                : searchController.text,
+          ),
+          SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: MonthHeader(
+              selectedDate: selectedDate,
+              onPickDate: pickMonthYear,
+              onExport: () {},
             ),
-            SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: MonthHeader(
-                selectedDate: selectedDate,
-                onPickDate: pickMonthYear,
-                onExport: () {},
-              ),
-            ),
-            ListView.separated(
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemBuilder: (context, index) => MothlyAttendanceItem(),
+          ),
+          ListView.separated(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemBuilder: (context, index) => MothlyAttendanceItem(),
 
-              separatorBuilder: (context, index) => SizedBox(height: 6),
-              itemCount: 10,
-            ),
-          ],
-        ),
+            separatorBuilder: (context, index) => SizedBox(height: 6),
+            itemCount: 10,
+          ),
+        ],
       ),
     );
   }

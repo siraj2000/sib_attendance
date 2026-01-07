@@ -15,4 +15,8 @@ String monthName(int month) {
   ];
   return months[month - 1]; // عشان ليست تبدا 0
 }
-//داله فيها الاشهر
+
+// // //داله فيها الاشهر
+// String formatDate(DateTime date) {
+//   return "${date.year}.${date.month.toString().padLeft(2, '0')}.${date.day.toString().padLeft(2, '0')}";
+// }

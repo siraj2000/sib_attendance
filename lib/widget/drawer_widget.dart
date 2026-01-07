@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sib_attendance/utils/app_colors.dart';
 import 'package:sib_attendance/views/dashborad_views.dart';
 import 'package:sib_attendance/views/employee_views.dart';
 import 'package:sib_attendance/views/home_views.dart';
@@ -6,6 +7,7 @@ import 'package:sib_attendance/views/live_views.dart';
 import 'package:sib_attendance/views/monthly_attendance_report.dart';
 import 'package:sib_attendance/views/synchronization_views.dart';
 import 'package:sib_attendance/widget/custom_text.dart';
+import 'package:sib_attendance/widget/tab_bar.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -32,7 +34,7 @@ class AppDrawer extends StatelessWidget {
 
             // ===== Dashboard (عادي) =====
             ListTile(
-              leading: const Icon(Icons.home),
+              leading: const Icon(Icons.home, color: AppColors.primary),
 
               //title: Text(l10n.dashboard),
               title: CustomText(text: "Dashboard", size: 14),
@@ -55,10 +57,16 @@ class AppDrawer extends StatelessWidget {
             // ===== Lists (Dropdown) =====
             ExpansionTile(
               shape: Border.all(color: Colors.white),
-              leading: const Icon(Icons.people_outline),
+              leading: const Icon(
+                Icons.people_outline,
+                color: AppColors.primary,
+              ),
               title: CustomText(text: "Lists", size: 14),
               //title: Text(l10n.lists),
-              trailing: const Icon(Icons.keyboard_arrow_down),
+              trailing: const Icon(
+                Icons.keyboard_arrow_down,
+                color: AppColors.primary,
+              ),
               childrenPadding: const EdgeInsets.only(left: 32),
               children: [
                 drawerSubItem(
@@ -74,14 +82,20 @@ class AppDrawer extends StatelessWidget {
             // ===== Attendance (Dropdown) =====
             ExpansionTile(
               shape: Border.all(color: Colors.white),
-              leading: const Icon(Icons.calendar_month),
+              leading: const Icon(
+                Icons.calendar_month,
+                color: AppColors.primary,
+              ),
               //title: Text(l10n.attendance),
               title: CustomText(text: "Attendance", size: 14),
-              trailing: const Icon(Icons.keyboard_arrow_down),
+              trailing: const Icon(
+                Icons.keyboard_arrow_down,
+                color: AppColors.primary,
+              ),
               childrenPadding: const EdgeInsets.only(left: 32),
               children: [
                 drawerSubItem(
-                  page: const MonthlyAttendanceReport(),
+                  page: const MonthlyAttendanceTabs(),
                   context,
                   // title: l10n.monthlyAttendanceReport,
                   title: "Monthly Attendance Report",
@@ -126,9 +140,12 @@ class AppDrawer extends StatelessWidget {
             // ===== Synchronization (Dropdown) =====
             ExpansionTile(
               shape: Border.all(color: Colors.white),
-              leading: const Icon(Icons.sync),
+              leading: const Icon(Icons.sync, color: AppColors.primary),
               title: const Text("Synchronization"),
-              trailing: const Icon(Icons.keyboard_arrow_down),
+              trailing: const Icon(
+                Icons.keyboard_arrow_down,
+                color: AppColors.primary,
+              ),
               childrenPadding: const EdgeInsets.only(left: 32),
               children: [
                 drawerSubItem(
