@@ -95,7 +95,7 @@ class AppDrawer extends StatelessWidget {
               childrenPadding: const EdgeInsets.only(left: 32),
               children: [
                 drawerSubItem(
-                  page: const MonthlyAttendanceTabs(),
+                  page: const MonthlyAttendanceReport(),
                   context,
                   // title: l10n.monthlyAttendanceReport,
                   title: "Monthly Attendance Report",

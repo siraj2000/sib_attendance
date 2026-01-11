@@ -1,29 +1,70 @@
+// import 'package:flutter/material.dart';
+// import 'package:sib_attendance/utils/app_colors.dart';
+// import 'package:sib_attendance/views/employee_views.dart';
+// import 'package:sib_attendance/views/home_views.dart';
+
+// import 'package:sib_attendance/widget/tab_bar.dart';
+
+// void main() {
+//   runApp(const MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   // This widget is the root of your application.
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       theme: ThemeData(
+//         appBarTheme: AppBarTheme(backgroundColor: AppColors.primary),
+//         scaffoldBackgroundColor: Colors.white,
+//       ),
+//       home: HomeScreen(),
+//     );
+//   }
+// }
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sib_attendance/provider/departments_provider.dart';
+import 'package:sib_attendance/provider/live_provider.dart';
+
+import 'package:sib_attendance/provider/user_provider.dart';
 import 'package:sib_attendance/utils/app_colors.dart';
-import 'package:sib_attendance/views/employee_views.dart';
 import 'package:sib_attendance/views/home_views.dart';
 
-import 'package:sib_attendance/widget/tab_bar.dart';
-
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => LiveProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        appBarTheme: AppBarTheme(backgroundColor: AppColors.primary),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: AppColors.primary,
+          titleTextStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+          iconTheme: IconThemeData(color: Colors.white),
+        ),
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: HomeScreen(),
-      //home: MonthlyAttendanceRange(),
-      // home: const SynchronizationViews(),
-      // home: const MonthlyAttendanceReport(),
+      home: const HomeScreen(),
     );
   }
 }

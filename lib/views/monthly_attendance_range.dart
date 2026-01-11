@@ -13,24 +13,6 @@ class MonthlyAttendanceRange extends StatefulWidget {
 class _MonthlyAttendanceRangeState extends State<MonthlyAttendanceRange> {
   TextEditingController searchController = TextEditingController();
 
-  // DateTime selectedDate = DateTime.now();
-  // List<UserModel> usersMap = [];
-  // Future<void> pickMonthYear() async {
-  //   final picked = await showDatePicker(
-  //     context: context,
-  //     initialDate: selectedDate,
-  //     firstDate: DateTime(2000),
-  //     lastDate: DateTime(2100),
-  //     initialDatePickerMode: DatePickerMode.year, //يبدأ من اختيار السنة
-  //   );
-
-  //   if (picked != null) {
-  //     setState(() {
-  //       selectedDate = DateTime(picked.year, picked.month);
-  //     });
-  //   }
-  // }
-
   DateTimeRange dateTimeRange = DateTimeRange(
     start: DateTime.now(),
     end: DateTime.now(),
@@ -59,6 +41,9 @@ class _MonthlyAttendanceRangeState extends State<MonthlyAttendanceRange> {
             padding: const EdgeInsets.all(10.0),
             child: TextFormField(
               controller: searchController,
+              onChanged: (value) {
+                setState(() {});
+              },
               decoration: InputDecoration(
                 hintText: "Search",
                 prefixIcon: Icon(Icons.search),
@@ -77,7 +62,7 @@ class _MonthlyAttendanceRangeState extends State<MonthlyAttendanceRange> {
               child: CustomText(
                 text: searchController.value.text.trim().isEmpty
                     ? "Employee Name"
-                    : searchController.text,
+                    : searchController.value.text,
                 color: Colors.black,
                 size: 15,
                 fontWeight: FontWeight.bold,
@@ -120,22 +105,7 @@ class _MonthlyAttendanceRangeState extends State<MonthlyAttendanceRange> {
               ],
             ),
           ),
-          // Padding(
-          //   padding: const EdgeInsets.all(10.0),
-          //   child: MonthHeader(
-          //     selectedDate: selectedDate,
-          //     onPickDate: pickMonthYear,
-          //     onExport: () {},
-          //   ),
-          // ),
-          // Padding(
-          //   padding: const EdgeInsets.all(10.0),
-          //   child: MonthHeader(
-          //     selectedDate: selectedDate,
-          //     onPickDate: pickMonthYear,
-          //     onExport: () {},
-          //   ),
-          // ),
+
           ListView.separated(
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,

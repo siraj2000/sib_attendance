@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sib_attendance/models/empolyee_models.dart';
 import 'package:sib_attendance/models/user_models.dart';
 import 'package:sib_attendance/utils/app_colors.dart';
 import 'package:sib_attendance/widget/custom_text.dart';
 
 class EmployeeProfileDialog extends StatelessWidget {
-  final UserModel user;
+  final EmployeeModel user;
   const EmployeeProfileDialog({super.key, required this.user});
 
   @override
@@ -35,14 +36,23 @@ class EmployeeProfileDialog extends StatelessWidget {
                   const SizedBox(height: 12),
                   // CustomText(text: "Employee ", size: 20, color: Colors.white),
                   CustomText(
-                    text: "${user.firstName} ${user.lastName}",
+                    // text: "${user.firstName} ${user.lastName}",
+                    text: user.fullName,
                     size: 20,
                     color: Colors.white,
                   ),
                   const SizedBox(height: 8),
-                  CustomText(text: "user.phone", color: Colors.white),
+                  CustomText(
+                    text: user.department.toString(),
+                    color: Colors.white,
+                  ),
                   const SizedBox(height: 8),
-                  CustomText(text: "user.email", color: Colors.white),
+                  CustomText(
+                    text:
+                        user.position?.toString() ??
+                        " لا يوجد موظف بهذا المنصب ",
+                    color: Colors.white,
+                  ),
                 ],
               ),
             ),
