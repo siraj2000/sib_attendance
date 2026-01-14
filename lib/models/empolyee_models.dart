@@ -13,17 +13,6 @@ class EmployeeModel {
     this.position,
   });
 
-  // factory EmployeeModel.fromJson(Map<String, dynamic> json) {
-  //   return EmployeeModel(
-  //     id: json['id'],
-  //     empCode: json['emp_code'],
-  //     fullName: json['full_name'],
-  //     department: Department.fromJson(json['department']),
-  //     position: json['position'] != null
-  //         ? Position.fromJson(json['position'])
-  //         : null,
-  //   );
-  // }
   factory EmployeeModel.fromJson(Map<String, dynamic> json) {
     final departmentJson = json['department'];
 

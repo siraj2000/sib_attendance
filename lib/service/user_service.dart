@@ -1,15 +1,13 @@
-import 'dart:io';
-
-import 'package:dio/dio.dart';
-import 'package:dio/io.dart';
 import 'package:sib_attendance/models/empolyee_models.dart';
-import 'package:sib_attendance/models/live_models.dart';
 import 'package:sib_attendance/network/api.dart';
 
 class UserService {
   final Api api = Api();
-  Future<List<EmployeeModel>> getUsers() async {
-    final response = await api.dio.get("${Api.baseUrl}/api/employees");
+  Future<List<EmployeeModel>> getUsers(String? code) async {
+    final response = await api.dio.get(
+      "${Api.baseUrl}/api/employees",
+      data: {if (code != null) 'emp_code': code},
+    );
     print(response.data);
     final List data = response.data["data"];
     return data
@@ -73,3 +71,4 @@ class UserService {
 //     await dio.delete("$baseUrl/api/employees/$id");
 //   }
 // }
+

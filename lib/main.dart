@@ -26,12 +26,15 @@
 // }
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sib_attendance/provider/departments_provider.dart';
+import 'package:sib_attendance/provider/attendance_provider.dart';
 import 'package:sib_attendance/provider/live_provider.dart';
+import 'package:sib_attendance/provider/monthly_attendance_provider.dart';
 
 import 'package:sib_attendance/provider/user_provider.dart';
 import 'package:sib_attendance/utils/app_colors.dart';
 import 'package:sib_attendance/views/home_views.dart';
+
+import 'package:sib_attendance/views/monthly_attendance_report.dart';
 
 void main() {
   runApp(
@@ -39,6 +42,8 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => UserProvider()),
         ChangeNotifierProvider(create: (_) => LiveProvider()),
+        ChangeNotifierProvider(create: (_) => MonthlyAttendanceProvider()),
+        ChangeNotifierProvider(create: (_) => AttendanceProvider()),
       ],
       child: const MyApp(),
     ),

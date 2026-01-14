@@ -6,6 +6,7 @@ import 'package:sib_attendance/widget/custom_text.dart';
 
 class EmployeeProfileDialog extends StatelessWidget {
   final EmployeeModel user;
+
   const EmployeeProfileDialog({super.key, required this.user});
 
   @override
@@ -43,14 +44,12 @@ class EmployeeProfileDialog extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   CustomText(
-                    text: user.department.toString(),
+                    text: user.department.deptName,
                     color: Colors.white,
                   ),
                   const SizedBox(height: 8),
                   CustomText(
-                    text:
-                        user.position?.toString() ??
-                        " لا يوجد موظف بهذا المنصب ",
+                    text: user.position?.positionName ?? 'N/A',
                     color: Colors.white,
                   ),
                 ],

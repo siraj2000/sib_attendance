@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sib_attendance/provider/user_provider.dart';
 import 'package:sib_attendance/utils/app_colors.dart';
 import 'package:sib_attendance/widget/custom_text.dart';
 import 'package:sib_attendance/widget/dashborad_items.dart';
 
-class DashboradViews extends StatelessWidget {
+class DashboradViews extends StatefulWidget {
   DashboradViews({super.key});
 
+  @override
+  State<DashboradViews> createState() => _DashboradViewsState();
+}
+
+class _DashboradViewsState extends State<DashboradViews> {
   final List<DashboradItems> items = [
     DashboradItems(
       title: "Synced Devices",
@@ -43,6 +50,16 @@ class DashboradViews extends StatelessWidget {
       gradient: AppColors.outsideCompanyGradient,
     ),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+
+    /// أول تحميل بدون قيم ثابتة
+    Future.microtask(() {
+      context.read<UserProvider>().fetchUsers();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

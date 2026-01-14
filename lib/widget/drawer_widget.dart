@@ -6,6 +6,7 @@ import 'package:sib_attendance/views/home_views.dart';
 import 'package:sib_attendance/views/live_views.dart';
 import 'package:sib_attendance/views/monthly_attendance_report.dart';
 import 'package:sib_attendance/views/synchronization_views.dart';
+import 'package:sib_attendance/views/test.dart';
 import 'package:sib_attendance/widget/custom_text.dart';
 import 'package:sib_attendance/widget/tab_bar.dart';
 
@@ -96,6 +97,7 @@ class AppDrawer extends StatelessWidget {
               children: [
                 drawerSubItem(
                   page: const MonthlyAttendanceReport(),
+
                   context,
                   // title: l10n.monthlyAttendanceReport,
                   title: "Monthly Attendance Report",
@@ -138,23 +140,23 @@ class AppDrawer extends StatelessWidget {
             // ),
 
             // ===== Synchronization (Dropdown) =====
-            ExpansionTile(
-              shape: Border.all(color: Colors.white),
-              leading: const Icon(Icons.sync, color: AppColors.primary),
-              title: const Text("Synchronization"),
-              trailing: const Icon(
-                Icons.keyboard_arrow_down,
-                color: AppColors.primary,
-              ),
-              childrenPadding: const EdgeInsets.only(left: 32),
-              children: [
-                drawerSubItem(
-                  context,
-                  title: "Management",
-                  page: SynchronizationViews(),
-                ),
-              ],
-            ),
+            // ExpansionTile(
+            //   shape: Border.all(color: Colors.white),
+            //   leading: const Icon(Icons.sync, color: AppColors.primary),
+            //   title: const Text("Synchronization"),
+            //   trailing: const Icon(
+            //     Icons.keyboard_arrow_down,
+            //     color: AppColors.primary,
+            //   ),
+            //   childrenPadding: const EdgeInsets.only(left: 32),
+            //   children: [
+            //     drawerSubItem(
+            //       context,
+            //       title: "Management",
+            //       page: SynchronizationViews(),
+            //     ),
+            //   ],
+            // ),
           ],
         ),
       ),

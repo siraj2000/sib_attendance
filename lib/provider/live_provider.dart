@@ -7,6 +7,7 @@ class LiveProvider extends ChangeNotifier {
   List<LiveModels> live = [];
   bool isLoading = false;
   String error = "";
+
   Future<void> fetchLive() async {
     isLoading = true;
     notifyListeners();

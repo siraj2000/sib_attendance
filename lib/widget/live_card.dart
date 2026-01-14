@@ -302,28 +302,6 @@ class LiveCard extends StatelessWidget {
                   ),
                 ),
               ),
-
-              /// 👤 Name + Department (CENTERED)
-              // Expanded(
-              //   flex: 2,
-              //   child: Column(
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     crossAxisAlignment: CrossAxisAlignment.center,
-              //     children: [
-              //       CustomText(
-              //         text: model.employee?.fullName ?? "",
-              //         size: 16,
-              //         color: Colors.grey.shade600,
-              //       ),
-              //       const SizedBox(height: 2),
-              //       CustomText(
-              //         text: model.employee?.department.deptName ?? "",
-              //         size: 14,
-              //         color: Colors.grey.shade600,
-              //       ),
-              //     ],
-              //   ),
-              // ),
               Expanded(
                 flex: 2,
                 child: Align(
