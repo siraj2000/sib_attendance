@@ -40,6 +40,7 @@ class AttendanceProvider extends ChangeNotifier {
 
   Future<void> fetchAttendance({
     required MonthlyAttendanceProvider monthlyProvider,
+    String? code,
   }) async {
     isLoading = true;
     notifyListeners();
@@ -48,7 +49,7 @@ class AttendanceProvider extends ChangeNotifier {
       attendance = await attendanceService.getAttendance(
         from: monthlyProvider.from,
         to: monthlyProvider.to,
-        employeeCode: monthlyProvider.employeeCode,
+        employeeCode: code ?? '',
       );
     } catch (e) {
       error = e.toString();

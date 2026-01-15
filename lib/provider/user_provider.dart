@@ -5,7 +5,7 @@ import 'package:sib_attendance/service/user_service.dart';
 class UserProvider extends ChangeNotifier {
   UserService service = UserService();
 
-  List<EmployeeModel> allUsers = [];
+  // List<EmployeeModel> allUsers = [];
   List<EmployeeModel> users = [];
   bool isLoading = false;
   String error = "";
