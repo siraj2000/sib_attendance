@@ -109,7 +109,7 @@
 //           ListView.separated(
 //             physics: NeverScrollableScrollPhysics(),
 //             shrinkWrap: true,
-//             itemBuilder: (context, index) => MothlyAttendanceItem(),
+//             itemBuilder: (context, index) => MothlyAttendanceItem(attendance: inde,),
 
 //             separatorBuilder: (context, index) => SizedBox(height: 6),
 //             itemCount: 10,

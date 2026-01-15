@@ -334,6 +334,8 @@ import 'package:sib_attendance/provider/user_provider.dart';
 import 'package:sib_attendance/utils/app_colors.dart';
 import 'package:sib_attendance/widget/custom_text.dart';
 import 'package:sib_attendance/widget/mothly_attendance_item.dart';
+import 'package:sib_attendance/widget/search_text_field.dart';
+import 'package:sib_attendance/widget/test_widget.dart';
 
 class MonthlyAttendanceReport extends StatefulWidget {
   const MonthlyAttendanceReport({super.key});
@@ -366,35 +368,47 @@ class _MonthlyAttendanceReportState extends State<MonthlyAttendanceReport> {
             const SizedBox(height: 10),
 
             /// 🔍 Search Employee Code
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Consumer<MonthlyAttendanceProvider>(
-                builder: (context, provider, child) {
-                  return TextFormField(
-                    controller: provider.searchController,
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 15,
-                      ),
-                      prefixIcon: const Icon(Icons.search),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(18),
-                      ),
-                      hintText: "Enter Employee Code",
-                    ),
-                    onChanged: (value) {
-                      provider.onSearchChanged(value);
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 10),
+            //   child: Consumer<MonthlyAttendanceProvider>(
+            //     builder: (context, provider, child) {
+            //       return TextFormField(
+            //         controller: provider.searchController,
+            //         decoration: InputDecoration(
+            //           contentPadding: const EdgeInsets.symmetric(
+            //             horizontal: 10,
+            //             vertical: 15,
+            //           ),
+            //           prefixIcon: const Icon(Icons.search),
+            //           border: OutlineInputBorder(
+            //             borderRadius: BorderRadius.circular(18),
+            //           ),
+            //           hintText: "Enter Employee Code",
+            //         ),
+            //         onChanged: (value) {
+            //           provider.onSearchChanged(value);
 
-                      context.read<AttendanceProvider>().fetchAttendance(
-                        monthlyProvider: provider,
-                      );
-                    },
-                  );
-                },
-              ),
+            //           context.read<AttendanceProvider>().fetchAttendance(
+            //             monthlyProvider: provider,
+            //           );
+            //         },
+            //       );
+            //     },
+            //   ),
+            // ),
+            Consumer<MonthlyAttendanceProvider>(
+              builder: (context, pro, child) {
+                return SearchTextField(
+                  hintText: "Search .........",
+                  onChanged: (value) {
+                    context.read<AttendanceProvider>().fetchAttendance(
+                      monthlyProvider: pro,
+                      code: value,
+                    );
+                  },
+                );
+              },
             ),
-
             const SizedBox(height: 10),
 
             /// 👤 Employee Name / Code

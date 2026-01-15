@@ -33,8 +33,10 @@ import 'package:sib_attendance/provider/monthly_attendance_provider.dart';
 import 'package:sib_attendance/provider/user_provider.dart';
 import 'package:sib_attendance/utils/app_colors.dart';
 import 'package:sib_attendance/views/home_views.dart';
+import 'package:sib_attendance/views/live_views.dart';
 
 import 'package:sib_attendance/views/monthly_attendance_report.dart';
+import 'package:sib_attendance/views/test.dart';
 
 void main() {
   runApp(
