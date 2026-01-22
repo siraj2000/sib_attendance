@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sib_attendance/views/home_views.dart';
+import 'package:sib_attendance/views/live_views.dart';
 
 class SplashViews extends StatefulWidget {
   const SplashViews({super.key});
@@ -15,7 +15,7 @@ class _SplashViewsState extends State<SplashViews> {
     Future.delayed(Duration(seconds: 5), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(builder: (context) => LiveViews()),
       );
     });
   }

@@ -1,56 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sib_attendance/provider/attendance_provider.dart';
+import 'package:sib_attendance/provider/live_provider.dart';
+import 'package:sib_attendance/provider/monthly_attendance_provider.dart';
 import 'package:sib_attendance/provider/user_provider.dart';
-import 'package:sib_attendance/utils/app_colors.dart';
 import 'package:sib_attendance/widget/custom_text.dart';
-import 'package:sib_attendance/widget/dashborad_items.dart';
 
 class DashboradViews extends StatefulWidget {
-  DashboradViews({super.key});
+  const DashboradViews({super.key});
 
   @override
   State<DashboradViews> createState() => _DashboradViewsState();
 }
 
 class _DashboradViewsState extends State<DashboradViews> {
-  final List<DashboradItems> items = [
-    DashboradItems(
-      title: "Synced Devices",
-      value: '2',
-      icon: Icons.monitor,
-      iconColor: AppColors.dashboardGreenIcon,
-      gradient: AppColors.devicesGradient,
-    ),
-    DashboradItems(
-      title: "Synced Logs",
-      value: '34,802',
-      icon: Icons.description,
-      iconColor: AppColors.dashboardRedIcon,
-      gradient: AppColors.logsGradient,
-    ),
-    DashboradItems(
-      title: "Synced Employees",
-      value: '77',
-      icon: Icons.people,
-      iconColor: AppColors.dashboardBlueIcon,
-      gradient: AppColors.employeesGradient,
-    ),
-    DashboradItems(
-      title: "Inside Company",
-      value: '66',
-      icon: Icons.file_download_outlined,
-      iconColor: AppColors.dashboardGreenIcon,
-      gradient: AppColors.insideCompanyGradient,
-    ),
-    DashboradItems(
-      title: "Outside Company",
-      value: '34',
-      icon: Icons.file_upload_outlined,
-      iconColor: AppColors.dashboardRedIcon,
-      gradient: AppColors.outsideCompanyGradient,
-    ),
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -58,19 +21,157 @@ class _DashboradViewsState extends State<DashboradViews> {
     /// أول تحميل بدون قيم ثابتة
     Future.microtask(() {
       context.read<UserProvider>().fetchUsers();
+      context.read<LiveProvider>().fetchLive();
+      context.read<AttendanceProvider>().fetchAttendance(
+        monthlyProvider: MonthlyAttendanceProvider(),
+      );
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: CustomText(text: "Dashboard", size: 14)),
-      body: ListView.separated(
-        padding: const EdgeInsets.all(12),
-        separatorBuilder: (_, __) => const SizedBox(height: 10),
-        itemCount: items.length,
-        itemBuilder: (context, index) => items[index],
-      ),
+    return Column(
+      children: [
+        SizedBox(height: 20),
+        Padding(
+          padding: const EdgeInsets.only(top: 12),
+          child: Row(
+            children: [
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: Colors.blue.withOpacity(0.6)),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Consumer<UserProvider>(
+                        builder: (context, provider, child) {
+                          return CustomText(
+                            text: provider.users.length.toString(),
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          );
+                        },
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4),
+                        child: CustomText(
+                          text: "Total Empolyee",
+                          color: Colors.grey,
+                          size: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(width: 8),
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: Colors.purple.withOpacity(0.6)),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Consumer<LiveProvider>(
+                        builder: (context, provider, child) {
+                          return CustomText(
+                            text: provider.inside.toString(),
+                            color: Colors.purple,
+                            fontWeight: FontWeight.bold,
+                            size: 20,
+                          );
+                        },
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4),
+                        child: CustomText(
+                          text: "Inside Company",
+                          color: Colors.grey,
+                          size: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: Row(
+            children: [
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: Colors.red.withOpacity(0.6)),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Consumer<LiveProvider>(
+                        builder: (context, provider, child) {
+                          return CustomText(
+                            text: provider.outside.toString(),
+                            color: Colors.orange,
+                            fontWeight: FontWeight.bold,
+                            size: 20,
+                          );
+                        },
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4),
+                        child: CustomText(
+                          text: "Outside Company",
+                          color: Colors.grey,
+                          size: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(width: 8),
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: Colors.orange.withOpacity(0.6)),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomText(text: "2", color: Colors.orange, size: 20),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4),
+                        child: CustomText(
+                          text: "Device",
+                          color: Colors.grey,
+                          size: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

@@ -17,34 +17,82 @@ class SearchTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
-      child: TextField(
-        controller: controller,
-        onChanged: onChanged,
-        decoration: InputDecoration(
-          hintText: hintText,
-
-          prefixIcon: const Icon(Icons.search, color: Colors.grey),
-          filled: true,
-          fillColor: const Color.fromARGB(255, 255, 254, 254),
-          contentPadding: const EdgeInsets.symmetric(
-            vertical: 12,
-            horizontal: 16,
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(
-              color: const Color.fromARGB(255, 160, 102, 102),
+      child: Container(
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 255, 254, 254),
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(.06),
+              blurRadius: 14,
+              spreadRadius: 0,
+              offset: const Offset(0, 6),
             ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(color: AppColors.primary),
-            //borderSide: BorderSide(color: Colors.black),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(color: AppColors.primary),
-            // borderSide: BorderSide(color: Colors.black),
+          ],
+        ),
+        child: TextField(
+          controller: controller,
+          onChanged: onChanged,
+          cursorColor: AppColors.primary,
+          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+          decoration: InputDecoration(
+            hintText: hintText,
+            hintStyle: TextStyle(
+              color: Colors.grey.withOpacity(.8),
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+            ),
+            prefixIcon: Padding(
+              padding: const EdgeInsets.only(left: 6, right: 6),
+              child: Icon(
+                Icons.search_rounded,
+                color: AppColors.primary.withOpacity(.85),
+                size: 22,
+              ),
+            ),
+            suffixIcon: controller == null
+                ? null
+                : IconButton(
+                    splashRadius: 18,
+                    onPressed: () {
+                      controller!.clear();
+                      if (onChanged != null) {
+                        onChanged!('');
+                      }
+                    },
+                    icon: Icon(
+                      Icons.close_rounded,
+                      color: Colors.grey.withOpacity(.7),
+                      size: 20,
+                    ),
+                  ),
+            filled: true,
+            fillColor: Colors.transparent,
+            contentPadding: const EdgeInsets.symmetric(
+              vertical: 14,
+              horizontal: 16,
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide(
+                color: AppColors.primary.withOpacity(.12),
+                width: 1,
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide(
+                color: AppColors.primary.withOpacity(.12),
+                width: 1,
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide(
+                color: AppColors.primary.withOpacity(.55),
+                width: 1.6,
+              ),
+            ),
           ),
         ),
       ),

@@ -1,7 +1,7 @@
 class AttendanceModel {
   final int id;
   final int bioId;
-  final int employeeId;
+  final dynamic employeeId;
   final String employeeCode;
   final DateTime punchTime;
   final String state;
@@ -86,49 +86,3 @@ class AttendanceModel {
     );
   }
 }
-// class AttendanceModel {
-//   final int id;
-//   final int bioId;
-//   final int employeeId;
-//   final String employeeCode;
-//   final DateTime punchTime;
-//   final String state;
-//   final String verifyType;
-//   final String terminalSn;
-//   final String terminalAlias;
-//   final String area;
-//   final DateTime createdAt;
-//   final DateTime updatedAt;
-
-//   AttendanceModel({
-//     required this.id,
-//     required this.bioId,
-//     required this.employeeId,
-//     required this.employeeCode,
-//     required this.punchTime,
-//     required this.state,
-//     required this.verifyType,
-//     required this.terminalSn,
-//     required this.terminalAlias,
-//     required this.area,
-//     required this.createdAt,
-//     required this.updatedAt,
-//   });
-
-//   factory AttendanceModel.fromJson(Map<String, dynamic> json) {
-//     return AttendanceModel(
-//       id: json['id'],
-//       bioId: json['bio_id'],
-//       employeeId: json['employee_id'],
-//       employeeCode: json['employee_code'],
-//       punchTime: DateTime.parse(json['punch_time']),
-//       state: json['state'],
-//       verifyType: json['verify_type'],
-//       terminalSn: json['terminal_sn'],
-//       terminalAlias: json['terminal_alias'],
-//       area: json['area'],
-//       createdAt: DateTime.parse(json['created_at']),
-//       updatedAt: DateTime.parse(json['updated_at']),
-//     );
-//   }
-// }

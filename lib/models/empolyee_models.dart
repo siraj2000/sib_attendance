@@ -32,31 +32,6 @@ class EmployeeModel {
     );
   }
 }
-// class EmployeeModel {
-//   final int id;
-//   final String empCode;
-//   final String fullName;
-//   final String department; // ✅ String
-//   final String? position;
-
-//   EmployeeModel({
-//     required this.id,
-//     required this.empCode,
-//     required this.fullName,
-//     required this.department,
-//     this.position,
-//   });
-
-//   factory EmployeeModel.fromJson(Map<String, dynamic> json) {
-//     return EmployeeModel(
-//       id: json['id'],
-//       empCode: json['emp_code'],
-//       fullName: json['full_name'],
-//       department: json['department']?.toString() ?? "",
-//       position: json['position']?.toString(),
-//     );
-//   }
-// }
 
 class Department {
   final int id;

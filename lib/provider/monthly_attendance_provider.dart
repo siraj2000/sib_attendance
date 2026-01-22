@@ -1,43 +1,3 @@
-// import 'package:flutter/material.dart';
-
-// class MonthlyAttendanceProvider extends ChangeNotifier {
-//   final TextEditingController searchController = TextEditingController();
-
-//   DateTimeRange dateTimeRange = DateTimeRange(
-//     start: DateTime.now(),
-//     end: DateTime.now(),
-//   );
-
-//   DateTimeRange get range => dateTimeRange;
-
-//   int get differenceInDays => dateTimeRange.duration.inDays;
-
-//   String get searchText => searchController.text.trim();
-
-//   Future<void> pickDateRange(BuildContext context) async {
-//     DateTimeRange? picked = await showDateRangePicker(
-//       context: context,
-//       firstDate: DateTime(2000),
-//       lastDate: DateTime(2100),
-//       initialDateRange: dateTimeRange,
-//     );
-
-//     if (picked == null) return;
-
-//     dateTimeRange = picked;
-//     notifyListeners();
-//   }
-
-//   void onSearchChanged(String value) {
-//     notifyListeners();
-//   }
-
-//   @override
-//   void dispose() {
-//     searchController.dispose();
-//     super.dispose();
-//   }
-// }
 import 'package:flutter/material.dart';
 
 class MonthlyAttendanceProvider extends ChangeNotifier {
@@ -60,6 +20,8 @@ class MonthlyAttendanceProvider extends ChangeNotifier {
 
   /// رقم الموظف
   String get employeeCode => searchText;
+
+  String get fullName => searchText;
 
   /// البحث
   void onSearchChanged(String value) {

@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sib_attendance/utils/app_colors.dart';
-import 'package:sib_attendance/views/dashborad_views.dart';
+
 import 'package:sib_attendance/views/employee_views.dart';
-import 'package:sib_attendance/views/home_views.dart';
 import 'package:sib_attendance/views/live_views.dart';
-import 'package:sib_attendance/views/monthly_attendance_report.dart';
-import 'package:sib_attendance/views/synchronization_views.dart';
+
 import 'package:sib_attendance/views/test.dart';
 import 'package:sib_attendance/widget/custom_text.dart';
-import 'package:sib_attendance/widget/tab_bar.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -33,40 +29,15 @@ class AppDrawer extends StatelessWidget {
               ),
             ),
 
-            // ===== Dashboard (عادي) =====
-            ListTile(
-              leading: const Icon(Icons.home, color: AppColors.primary),
-
-              //title: Text(l10n.dashboard),
-              title: CustomText(text: "Dashboard", size: 14),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              tileColor: Colors.white,
-
-              onTap: () {
-                //Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => DashboradViews()),
-                );
-              },
-            ),
-
-            const SizedBox(height: 6),
-
             // ===== Lists (Dropdown) =====
             ExpansionTile(
               shape: Border.all(color: Colors.white),
-              leading: const Icon(
-                Icons.people_outline,
-                color: AppColors.primary,
-              ),
+              leading: const Icon(Icons.people_outline, color: Colors.indigo),
               title: CustomText(text: "Lists", size: 14),
               //title: Text(l10n.lists),
               trailing: const Icon(
                 Icons.keyboard_arrow_down,
-                color: AppColors.primary,
+                color: Colors.indigo,
               ),
               childrenPadding: const EdgeInsets.only(left: 32),
               children: [
@@ -83,20 +54,17 @@ class AppDrawer extends StatelessWidget {
             // ===== Attendance (Dropdown) =====
             ExpansionTile(
               shape: Border.all(color: Colors.white),
-              leading: const Icon(
-                Icons.calendar_month,
-                color: AppColors.primary,
-              ),
+              leading: const Icon(Icons.calendar_month, color: Colors.indigo),
               //title: Text(l10n.attendance),
               title: CustomText(text: "Attendance", size: 14),
               trailing: const Icon(
                 Icons.keyboard_arrow_down,
-                color: AppColors.primary,
+                color: Colors.indigo,
               ),
               childrenPadding: const EdgeInsets.only(left: 32),
               children: [
                 drawerSubItem(
-                  page: const MonthlyAttendanceReport(),
+                  page: const Test(),
 
                   context,
                   // title: l10n.monthlyAttendanceReport,
@@ -109,12 +77,12 @@ class AppDrawer extends StatelessWidget {
                   // title: l10n.liveScreen,
                   title: "Live Screen",
                 ),
-                drawerSubItem(
-                  page: const HomeScreen(),
-                  context,
-                  //title: l10n.workSchedules,
-                  title: "Work Schedules",
-                ),
+                // drawerSubItem(
+                //   page: const HomeScreen(),
+                //   context,
+                //   //title: l10n.workSchedules,
+                //   title: "Work Schedules",
+                // ),
               ],
             ),
 
@@ -146,7 +114,7 @@ class AppDrawer extends StatelessWidget {
             //   title: const Text("Synchronization"),
             //   trailing: const Icon(
             //     Icons.keyboard_arrow_down,
-            //     color: AppColors.primary,
+            //     color: Colors.indigo,
             //   ),
             //   childrenPadding: const EdgeInsets.only(left: 32),
             //   children: [

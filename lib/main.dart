@@ -31,12 +31,7 @@ import 'package:sib_attendance/provider/live_provider.dart';
 import 'package:sib_attendance/provider/monthly_attendance_provider.dart';
 
 import 'package:sib_attendance/provider/user_provider.dart';
-import 'package:sib_attendance/utils/app_colors.dart';
-import 'package:sib_attendance/views/home_views.dart';
-import 'package:sib_attendance/views/live_views.dart';
-
-import 'package:sib_attendance/views/monthly_attendance_report.dart';
-import 'package:sib_attendance/views/test.dart';
+import 'package:sib_attendance/views/splash_views.dart';
 
 void main() {
   runApp(
@@ -61,7 +56,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-          backgroundColor: AppColors.primary,
+          backgroundColor: const Color(0xFF1B2B4A),
           titleTextStyle: TextStyle(
             color: Colors.white,
             fontSize: 20,
@@ -71,7 +66,7 @@ class MyApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const HomeScreen(),
+      home: SplashViews(),
     );
   }
 }

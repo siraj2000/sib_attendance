@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sib_attendance/models/empolyee_models.dart';
-import 'package:sib_attendance/models/user_models.dart';
 import 'package:sib_attendance/utils/app_colors.dart';
 import 'package:sib_attendance/widget/custom_text.dart';
 
@@ -28,7 +27,7 @@ class EmployeeProfileDialog extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircleAvatar(
-                    radius: 34,
+                    radius: 30,
                     backgroundColor: Colors.white,
                     backgroundImage: NetworkImage(
                       "https://static.vecteezy.com/system/resources/previews/018/765/757/original/user-profile-icon-in-flat-style-member-avatar-illustration-on-isolated-background-human-permission-sign-business-concept-vector.jpg",
@@ -60,21 +59,21 @@ class EmployeeProfileDialog extends StatelessWidget {
               padding: const EdgeInsets.all(12),
               child: Column(
                 children: [
-                  ListTile(
-                    dense: true,
-                    title: CustomText(text: ".age"),
-                    trailing: CustomText(text: "age"),
-                  ),
-                  ListTile(
-                    dense: true,
-                    title: CustomText(text: "phone"),
-                    trailing: CustomText(text: "user.phone."),
-                  ),
-                  ListTile(
-                    dense: true,
-                    title: CustomText(text: "gender"),
-                    trailing: CustomText(text: "user."),
-                  ),
+                  // ListTile(
+                  //   dense: true,
+                  //   title: CustomText(text: ".age"),
+                  //   trailing: CustomText(text: "age"),
+                  // ),
+                  // ListTile(
+                  //   dense: true,
+                  //   title: CustomText(text: "phone"),
+                  //   trailing: CustomText(text: "user.phone."),
+                  // ),
+                  // ListTile(
+                  //   dense: true,
+                  //   title: CustomText(text: "gender"),
+                  //   trailing: CustomText(text: "user."),
+                  // ),
                   const SizedBox(height: 8),
                   SizedBox(
                     width: double.infinity,
