@@ -44,7 +44,7 @@ class EmployeeCard extends StatelessWidget {
             trailing: Column(
               children: [
                 Icon(Icons.person, color: Colors.grey),
-                CustomText(text: usersMap.empCode),
+                CustomText(text: usersMap.empCode.toString()),
               ],
             ),
             // CustomText(text: usersMap.age.toString()),

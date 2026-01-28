@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:sib_attendance/views/employee_views.dart';
 import 'package:sib_attendance/views/live_views.dart';
+import 'package:sib_attendance/views/monthly_attendance_report.dart';
 
 import 'package:sib_attendance/views/test.dart';
 import 'package:sib_attendance/widget/custom_text.dart';
@@ -65,7 +66,7 @@ class AppDrawer extends StatelessWidget {
               children: [
                 drawerSubItem(
                   page: const Test(),
-
+                  //page: MonthlyAttendanceReport(),
                   context,
                   // title: l10n.monthlyAttendanceReport,
                   title: "Monthly Attendance Report",

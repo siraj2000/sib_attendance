@@ -81,9 +81,6 @@ class MothlyAttendanceItem extends StatelessWidget {
                 Expanded(
                   flex: 3,
                   child: CustomText(
-                    // text: users
-                    //     .firstWhere((user) => user.id == attendance.employeeId)
-                    //     .fullName,
                     text: users
                         .firstWhere((user) => attendance.employeeId == user.id)
                         .fullName,
